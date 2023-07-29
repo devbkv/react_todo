@@ -23,6 +23,7 @@ function App() {
       id: Date.now(),
       body,
     };
+    console.log('test');
     const updItems = [...todoItems, newTodoItem];
     setTodoItems(updItems);
     setBody('');
