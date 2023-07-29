@@ -12,7 +12,7 @@ function App() {
   React.useEffect(() => {
     const savedTodoItems = localStorage.getItem('todoItems');
     if (savedTodoItems) {
-      console.log('partse', JSON.parse(savedTodoItems));
+      console.log('parse', JSON.parse(savedTodoItems));
       setTodoItems(JSON.parse(savedTodoItems));
     }
   }, []);
