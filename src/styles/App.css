@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  max-width: 800px;
+}
+
+.App-header {
+  display: flex;
+  margin-bottom: 30px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+
+.todoItems {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.addTodoItem {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.TodoList {
+  width: 100%;
+}
