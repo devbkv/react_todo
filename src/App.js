@@ -7,8 +7,15 @@ import './styles/App.css';
 
 function App() {
   const [todoItems, setTodoItems] = useState([]);
-
   const [body, setBody] = useState('');
+
+  React.useEffect(() => {
+    const savedTodoItems = localStorage.getItem('todoItems');
+    if (savedTodoItems) {
+      console.log('partse', JSON.parse(savedTodoItems));
+      setTodoItems(JSON.parse(savedTodoItems));
+    }
+  }, []);
 
   const addNewTodoItem = (e) => {
     e.preventDefault();
@@ -17,12 +24,17 @@ function App() {
       body,
     };
     console.log(newTodoItem);
-    setTodoItems([...todoItems, newTodoItem]);
+    const updItems = [...todoItems, newTodoItem];
+    setTodoItems(updItems);
     setBody('');
+
+    localStorage.setItem('todoItems', JSON.stringify(updItems));
   };
 
   const removeTodoItem = (todoItem) => {
-    setTodoItems(todoItems.filter((tI) => tI.id !== todoItem.id));
+    const updItems = todoItems.filter((tI) => tI.id !== todoItem.id);
+    setTodoItems(updItems);
+    localStorage.setItem('todoItems', JSON.stringify(updItems));
   };
 
   return (
@@ -36,7 +48,12 @@ function App() {
         />
         <MyButton onClick={addNewTodoItem}>Добавить задачу</MyButton>
       </div>
-      <TodoList remove={removeTodoItem} className="TodoList" todoItems={todoItems} />
+      <TodoList
+        remove={removeTodoItem}
+        className="TodoList"
+        todoItems={todoItems}
+        setTodoItems={setTodoItems}
+      />
     </div>
   );
 }
